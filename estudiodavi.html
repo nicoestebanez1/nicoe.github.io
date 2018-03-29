@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Estudio Davi</title>
+<style>
+    @font-face {
+        font-family: Varela Round;
+        src: url(VarelaRound-Regular.ttf) format("opentype");
+    }
+    a:link{
+        text-decoration: none;
+    }
+    #main_nav {
+        overflow: hidden;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    #main_nav ul {
+        margin: 0;
+    }
+
+    #main_nav li {
+        display: inline-block;
+        font-family: Varela Round;
+        color: grey;
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        -webkit-font-smoothing: subpixel-antialiased;
+        border-bottom: 1px solid #e5e5e5;
+    }
+
+    #main_nav2 li a {
+        display: block;
+        padding: 20px 17px 13px;
+        border: 0;
+    }
+
+    #main_nav2 {
+        overflow: hidden;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    #main_nav2 ul {
+        margin: 0;
+        padding: 2em;
+    }
+
+    #main_nav2 li {
+        display: inline-block;
+        font-family: Varela Round;
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        -webkit-font-smoothing: subpixel-antialiased;
+        border-bottom: 1px solid #e5e5e5;
+    }
+
+    #main_nav2 li a {
+        display: block;
+        padding: 20px 17px 13px;
+        border: 0;
+    }
+    header {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 2em;
+    }
+
+    table{
+        margin: auto;
+    }
+    th, td{
+
+        padding: 1em;
+    }
+
+    ul {
+        display: table;
+        list-style: none;
+        padding: 0;
+    }
+
+    ul, li {
+        display: inline-block;
+        padding: 5px;
+    }
+
+    .container {
+        position: relative;
+
+    }
+
+    .image {
+        display: block;
+        position: relative;
+        border-radius: 5px;
+        width: 90%;
+
+    }
+
+    .overlay {
+        position: absolute;
+        width: 90%;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        opacity: 0;
+        transition: .5s ease;
+        background-color: black;
+        border-radius: 5px;
+    }
+
+    .container:hover .overlay {
+        opacity: 1;
+        width: 90%;
+        background-color:rgba(0, 0, 0, 0.7);
+        border-radius: 5px;
+    }
+
+    .text {
+        font-family: Papyrus;
+        letter-spacing: 2px;
+        color: white;
+        font-size: 20px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        text-align: center;
+        opacity:1;
+    }
+</style>
+</head>
+<body>
+
+
+<div id="main_nav" class="theme">
+    <ul>
+        <li>
+            <a href="http://www.estudiodavi.com/products">Products</a>
+        </li>
+        <li>
+            <a href="http://www.estudiodavi.com/about">About</a>
+        </li>
+        <li>
+            <a href="http://www.estudiodavi.com/policies">Important Info</a>
+        </li>
+        <li>
+            <a href="http://www.estudiodavi.com/contact">Contact</a>
+        </li>
+        <li>
+            <a href="http://www.estudiodavi.com/cart">Cart</a>
+        </li>
+    </ul>
+    <header>
+
+        <div id="branding">
+            <a href="https://estudiodavi.github.io/">
+                <img src="logo-estudio-davi.png" alt="Estudio Davi">
+            </a>
+        </div>
+
+    </header>
+</div>
+
+<table>
+    <tr>
+        <th> </th>
+        <th> </th>
+        <th> </th>
+    </tr>
+
+    <tr>
+        <td>       <a href="http://www.estudiodavi.com/product/rayo-del-sol-3">
+            <div class="container">
+            <img src="sol-mezcla-3dot-still-4.jpg" alt="Saucy Earrings... Trust me" class="image">
+            <div class="overlay">
+                <div class="text">MEZCLA<br>
+                    $135.00</div>
+            </div>
+        </div>
+            </a>
+        </td>
+        <td>
+            <a href="http://www.estudiodavi.com/product/flamenco-square-black">
+            <div class="container">
+                <img src="flamenco-nuevo-black-flatdot-still-1.jpg" alt="Saucy Earrings... Trust me" class="image">
+                <div class="overlay">
+                    <div class="text">NUEVO<br>
+                        $95.00</div>
+                </div>
+            </div>
+        </a>
+        </td>
+        <td>
+            <a href="http://www.estudiodavi.com/product/tangos">
+                <div class="container">
+                    <img src="flamenco-drop-colordot-mint-still-6.jpg" alt="Saucy Earrings... Trust me" class="image">
+                    <div class="overlay">
+                        <div class="text">TANGOS<br>
+                            $115.00</div>
+                    </div>
+                </div>
+            </a>
+
+        </td>
+
+    </tr>
+    <tr>
+        <td>
+            <a href="http://www.estudiodavi.com/product/media-luna">
+                <div class="container">
+                    <img src="mesomod-medialuna-bigdot-still-2.jpg" alt="Saucy Earrings... Trust me" class="image">
+                    <div class="overlay">
+                        <div class="text">MEDIA LUNA<br>
+                            $135.00</div>
+                    </div>
+                </div>
+            </a>
+        </td>
+        <td>
+            <a href="http://www.estudiodavi.com/product/ojos-oro">
+                <div class="container">
+                    <img src="mesomod-ojo-bigdot-still-2.jpg" alt="Saucy Earrings... Trust me" class="image">
+                    <div class="overlay">
+                        <div class="text">OJO<br>
+                            $135.00</div>
+                    </div>
+                </div>
+            </a>
+
+        </td>
+        <td>
+
+            <a href="http://www.estudiodavi.com/product/one-fish">
+                <div class="container">
+                    <img src="grafica-onefish-still-1.jpg" alt="Saucy Earrings... Trust me" class="image">
+                    <div class="overlay">
+                        <div class="text">TANGOS<br>
+                            $75.00</div>
+                    </div>
+                </div>
+            </a>
+        </td>
+
+    </tr>
+</table>
+<div id="main_nav2" class="theme">
+    <ul>
+        <li>
+            <a href="http://www.estudiodavi.com/products">Products</a>
+        </li>
+        <li>
+            <a href="http://www.estudiodavi.com/about">About</a>
+        </li>
+        <li>
+            <a href="http://www.estudiodavi.com/policies">Important Info</a>
+        </li>
+        <li>
+        <a href="http://www.estudiodavi.com/newsletter">Newsletter</a>
+        </li>
+        <li>
+            <a href="http://www.estudiodavi.com/contact">Contact</a>
+        </li>
+
+        <li>
+            <a href="http://www.estudiodavi.com/cart">Cart</a>
+        </li>
+        <li>
+            <a href="http://facebook.com/EstudioDavi">Facebook</a>
+        </li>
+
+    </ul>
+</div>
+
+
+
+
+
+
+
+
+</body>
+</html>
+
+
+
