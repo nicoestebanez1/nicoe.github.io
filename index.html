@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Photo Editor</title>
+
+    <style>
+
+        #go {
+            font-family: "Times New Roman";
+            font-size: 15px;
+            color: white;
+            background-color: deepskyblue;
+            border-radius: 10px;
+            height: 25px;
+            width: 50px;
+            border: 3px solid deepskyblue;
+            outline: none;
+        }
+        #go:hover{
+            background-color: white;
+            color: deepskyblue;
+            outline: none;
+        }
+
+        p {
+            width: 15%;
+        }
+        body{
+            font-family: "Lao MN";
+            background-color: lightgrey;
+
+        }
+        #imageEditor{
+
+        }
+        .url-box {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 257px;
+            height: 25px;
+            border-radius: 10%;
+            border: 3px solid deepskyblue;
+            background-color: white;
+            cursor: pointer;
+            outline: none;
+        }
+        .slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 15px;
+            border-radius: 5px;
+            background: white;
+            outline: none;
+            opacity: 0.7;
+            -webkit-transition: .2s;
+            transition: opacity .2s;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background-color: deepskyblue;
+            cursor: pointer;
+        }
+
+        .slider::-moz-range-thumb {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background-color: black;
+            cursor: pointer;
+        }
+
+        img{
+            width: 60%;
+            right: 13.5%;
+            top: 5em;
+            position: absolute;
+            text-align: center;
+            border: 6px groove lightslategrey;
+        }
+
+        #reset{
+            height: 10em;
+            font-family: "Times New Roman";
+            font-size: 20px;
+            color: white;
+            background-color: deepskyblue;
+            border-radius: 10px;
+            height: 50px;
+            width: 200px;
+            border:3px solid deepskyblue;
+            user-select: none;
+            outline: none;
+        }
+
+        #reset:hover{
+            background-color: white;
+            color: deepskyblue;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+<script src='https://code.jquery.com/jquery-3.1.0.min.js'></script>
+<form id="urlBox" class="center">
+    <input class="url-box" type="url" id="imgUrl" placeholder="Paste any image link and hit enter to start editing">
+    <input id="go" type="button" value="Go">
+    <input type="file" id="file" accept="image/*">
+</form>
+
+<form id="imageEditor">
+    <p>
+        <label for="gs">Grayscale</label>
+        <input class="slider" id="gs" name="gs" type="range" min="0" max="100" value="0">
+    </p>
+
+    <p>
+        <label for="blur">Blur</label>
+        <input class="slider" id="blur" name="blur" type="range" min="0" max="10" value="0">
+    </p>
+    <p>
+        <label for="br">Brightness</label>
+        <input class="slider" id="br" name="br" type="range" min="0" max="200" value="100">
+    </p>
+    <p>
+        <label for="ct">Contrast</label>
+        <input class="slider" id="ct" name="ct" type="range" min="0" max="200" value="100">
+    </p>
+    <p>
+        <label for="huer">Hue Rotate</label>
+        <input class="slider" id="huer" name="huer" type="range" min="0" max="360" value="0">
+    </p>
+    <p>
+        <label for="opacity">Opacity</label>
+        <input class="slider" id="opacity" name="opacity" type="range" min="0" max="100" value="100">
+    </p>
+    <p>
+        <label for="invert">Invert</label>
+        <input class="slider" id="invert" name="invert" type="range" min="0" max="100" value="0">
+    </p>
+    <p>
+        <label for="saturate">Saturate</label>
+        <input class="slider" id="saturate" name="saturate" type="range" min="0" max="500" value="100">
+    </p>
+    <p>
+        <label for="sepia">Sepia</label>
+        <input class="slider" id="sepia" name="sepia" type="range" min="0" max="100" value="0">
+    </p>
+    <input type="reset" form="imageEditor" id="reset" value="Reset">
+</form>
+
+
+
+<div id="imageContainer" class="center">
+    <img id="image" src="cliffs.jpg">
+</div>
+
+<script type="text/javascript" src="jquery-3.3.1.js"></script>
+
+
+
+<script>
+    function addImage(e) {
+        var imgUrl = $('#imgUrl').val();
+        if (imgUrl.length){
+            $('#imageContainer img').attr('src', imgUrl)
+        }
+        e.preventDefault();
+    }
+var img = document.getElementById("image")
+var filet = document.getElementById("file")
+
+function editImage() {
+    var gs 		 = $("#gs").val();
+    var blur 	 = $("#blur").val();
+    var br 		 = $("#br").val();
+    var ct 		 = $("#ct").val();
+    var huer	 = $("#huer").val();
+    var opacity      = $("#opacity").val();
+    var invert 	 = $("#invert").val();
+    var saturate     = $("#saturate").val();
+    var sepia 	 = $("#sepia").val();
+    var rb = $("#rb").val();
+
+    var filter = 	'grayscale(' + gs+
+        '%) blur(' + blur +
+        'px) brightness(' + br +
+        '%) contrast(' + ct +
+        '%) hue-rotate(' + huer +
+        'deg) opacity(' + opacity +
+        '%) invert(' + invert +
+        '%) saturate(' + saturate +
+        '%) sepia(' + sepia + '%) ';
+
+    $("#imageContainer img").css("filter", filter);
+    $("#imageContainer img").css("-webkit-filter", filter);
+}
+
+
+$('#go').click(addImage);
+
+$("#urlBox").submit(addImage);
+
+$("input[type=range]").change(editImage).mousemove(editImage);
+
+$('#imageEditor').on('reset', function() {
+        setTimeout(function() {
+            editImage();
+        },0);
+    });
+
+
+
+filet.addEventListener('change', function (){
+    var file = filet.files[0];
+    var reader = new FileReader();
+    reader.onloadend = function(){
+        img.src = reader.result;
+    };
+    if(file){
+        reader.readAsDataURL(file);
+    }else{
+    }
+}, true);
+
+
+
+</script>
+</body>
+</html>
