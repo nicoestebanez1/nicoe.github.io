@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hangman</title>
+    <link rel="stylesheet" type="text/css" href="css/wordguesser.css">
+    <style>
+
+    </style>
+</head>
+<body>
+<div id="main_nav" class="theme">
+    <ul>
+        <li>
+            <a href="index.html">Image Editor</a>
+        </li>
+        <li>
+            <a href="tictactoe.html">Tic-Tac-Toe</a>
+        </li>
+        <li>
+            <a href="wordguesser.html">Word Guesser</a>
+        </li>
+        <li>
+            <a href="estudiodavi.html">Estudio Davi</a>
+        </li>
+        <li>
+            <a href="https://github.com/nicoestebanez1/nico.github.io">My Github</a>
+        </li>
+    </ul>
+</div>
+<div id="wrapper">
+    <div id="input">
+        <form id="ur_input" autocomplete="off">
+            <label for="letter">Guess a Letter</label><br>
+            <div class="curmudgeon box">
+                <input type="text" id="letter" maxlength="1" placeholder="Click to Start" onfocus="this.placeholder=''" onblur="this.placeholder='Click to Start'">
+            </div>
+        </form>
+    </div>
+    <div id="container">
+        <div id="word">
+        </div>
+    </div>
+    <p id="label">Guesses</p>
+    <div id="guesses">
+        <br>
+    </div>
+    <p id="ending"></p>
+</div>
+<div id="lives">
+    <span id='a' class="life"></span>
+    <span id='b' class="life"></span>
+    <span id='c' class="life"></span>
+    <span id='d' class="life"></span>
+    <span id='e' class="life"></span>
+    <span id='f' class="life"></span>
+</div>
+<script src="js/jquery-3.3.1.js"></script>
+<script src="js/wordguesser.js"></script>
+</body>
+</html>
