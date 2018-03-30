@@ -1,59 +1,114 @@
-// Tic-Tac-Toe starter code for BHS class
-
-var player = "X";
+var isWinner = false;
+var player = 'X';
 var board = [];
-// Initialize board to a 2D array of empty strings, 3x3
+var winner = 'O';
+var restart = document.getElementById('restart');
+restart.addEventListener('click', function () {
+    board = [[" ", " ", " "],[" ", " ", " "],[" ", " ", " "]];
+    player = 'X';
+    winner = 'Y';
+    isWinner = false;
+    setupClickListener();
+    updateBoardDisplay();
+    updateStatusDisplay();
+
+});
+var spaces = document.getElementsByTagName('');
 for (var row = 0; row < 3; row++) {
     var cols = [];
     for (var col = 0; col < 3; col++) {
-        cols.push("");
+        cols.push(" ");
     }
     board.push(cols);
 }
-
-// Handles click by current player of row and col
 var handleClick = function(row, col) {
-    // TODO: Check if move is valid (space is empty)
-    // TODO: If move is valid, update board array with player
-    // TODO: Toggle current player
+    if(board[row][col] === ' '){
+        board[row][col] = player;
+        if(player === 'X'){
+            player = 'O';
+            winner = 'X';
+        }
+        else{
+            player = 'X';
+            winner = 'O';
+        }
+    }
+    updateBoardDisplay();
+    updateStatusDisplay();
 };
 
 // Returns winning player if found (X or O)
 // If no winner, returns empty string
 var checkForWinner = function() {
-    // TODO: Check for win of rows, cols, or diagonals
-    return "";
-};
-
-var CELL_SIZE = 40;
-mouseClicked = function() {
-    var clickedRow = Math.floor(mouseY / CELL_SIZE);
-    var clickedCol = Math.floor(mouseX / CELL_SIZE);
-    if (clickedRow <= 3 && clickedCol <= 3) {
-        handleClick(clickedRow, clickedCol);
+    if(
+        board[0][0] === board[0][1] && board[0][0] === board[0][2] && board[0][0] !== " " ||
+        board[1][0] === board[1][1] && board[1][0] === board[1][2] && board[1][0] !== " " ||
+        board[2][0] === board[2][1] && board[2][0] === board[2][2] && board[2][0] !== " " ||
+        board[0][0] === board[1][0] && board[0][0] === board[2][0] && board[0][0] !== " " ||
+        board[0][1] === board[1][1] && board[0][1] === board[2][1] && board[0][1] !== " " ||
+        board[0][2] === board[1][2] && board[0][2] === board[2][2] && board[0][2] !== " " ||
+        board[0][0] === board[1][1] && board[0][0] === board[2][2] && board[0][0] !== " " ||
+        board[0][2] === board[1][1] && board[0][2] === board[2][0] && board[0][2] !== " "
+    ){
+        console.log('WON');
+        return winner;
     }
+
 };
 
-draw = function() {
-    background(255, 255, 255);
-    stroke(0, 0, 0);
-
-    for (var row = 0; row < board.length; row++) {
-        for (var col = 0; col < board[row].length; col++) {
-            var cellX = 0 + col * CELL_SIZE;
-            var cellY = 0 + row * CELL_SIZE;
-            fill(181, 255, 183);
-            rect(cellX, cellY, CELL_SIZE, CELL_SIZE);
-            fill(0, 0, 0);
-            text(board[row][col], cellX + CELL_SIZE/3, cellY + CELL_SIZE/2);
+var setupClickListener = function() {
+    var boardTable = document.getElementById("board");
+    boardTable.addEventListener("click", function(event) {
+        if(!isWinner){
+            if (event.target.nodeName !== "TD") {
+                return;
+            }
+            var cell = event.target;
+            var row = Number.parseInt(cell.getAttribute("data-row"), 10);
+            var col = Number.parseInt(cell.getAttribute("data-col"), 10);
+            handleClick(row, col);
         }
-    }
+    });
+};
 
-    fill(0, 0, 0);
+var updateBoardDisplay = function() {
+    var boardTable = document.getElementById("board");
+    boardTable.innerHTML = "";
+    for (var row = 0; row < board.length; row++) {
+        var tableRow = document.createElement("tr");
+        for (var col = 0; col < board[row].length; col++) {
+            var cellTd = document.createElement("td");
+            cellTd.innerHTML = board[row][col];
+            cellTd.setAttribute("data-row", row);
+            cellTd.setAttribute("data-col", col);
+            if(col === 1){
+                cellTd.style.borderLeft = 'solid';
+                cellTd.style.borderRight = 'solid';
+            }
+            if(row === 1){
+                cellTd.style.borderTop = 'solid';
+                cellTd.style.borderBottom = 'solid';
+            }
+            tableRow.appendChild(cellTd);
+        }
+        boardTable.appendChild(tableRow);
+    }
+};
+
+var updateStatusDisplay = function() {
+    console.log(board, board.includes(" "), !board.includes(" "));
+    var statusDiv = document.getElementById("status");
     var winner = checkForWinner();
     if (winner) {
-        text("Winner is " + winner, 20, 160);
-    } else {
-        text("Current player is " + player, 20, 160);
+        statusDiv.innerHTML = winner + ' Wins!';
+        isWinner = true
+    }else if(!board[0].includes(' ') && !board[1].includes(' ') && !board[2].includes(' ')){
+        statusDiv.innerHTML = 'Tie!'
+    }else {
+        statusDiv.innerHTML = "Current player is " + player;
     }
 };
+
+setupClickListener();
+updateBoardDisplay();
+updateStatusDisplay();
